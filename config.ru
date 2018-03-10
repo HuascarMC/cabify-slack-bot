@@ -4,7 +4,7 @@ require 'dotenv'
 Dotenv.load
 
 require 'slack-mathbot'
-require 'web'
+require 'specs/web'
 
 Thread.abort_on_exception = true
 
