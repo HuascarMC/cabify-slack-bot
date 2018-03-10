@@ -12,12 +12,8 @@ require 'spec_helper'
    expect(@geocoder.api_key).to be_truthy
   end
 
-  it 'doesnt have a location' do
-   expect(nil).to include(@geocoder.location)
-  end
-
   it 'geocodes address' do
-   expect({"lon"=>1.2313, "lat"=>38.41 }).to include(@geocoder.geocode('Calle de Pradillo, 42, 28002 Madrid, Spain'))
+   expect({"lon"=>1.2313, "lat"=>38.41 }).to eq(@geocoder.send(:geocode, "Calle de Pradillo, 42, 28002 Madrid, Spain"))
   end
 
   it 'has a city' do

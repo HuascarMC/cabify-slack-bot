@@ -13,6 +13,12 @@ def getapi_key
 end
 
 def geocode(address)
- json_data = HTTP.get(`https://maps.googleapis.com/maps/api/geocode/json?address=` + address + '&key=' + @api_key)
+ split_address = address.gsub(/,*\s+/,'+')
+ url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{split_address}&key=#{@api_key}"
+ puts url
+ json_data = HTTP.get(url)
+ puts 'lol'
  puts json_data
+
+ # return json_data
 end
