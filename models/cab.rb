@@ -1,5 +1,10 @@
-require 'json'
-require 'http'
+class Cab
+  attr_accessor :state, :name, :location, :city
 
-data = JSON.parse(json_data)
-residents = data['Resident'].map { |rd| Resident.new(rd['phone'], rd['addr']) }
+  def initialize(state, name, location, city)
+      @state = state
+      @name = name
+      @location = location
+      @city = city
+  end
+end
