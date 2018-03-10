@@ -6,6 +6,9 @@ class Geocoder
 
   def initialize
       @api_key = ENV['API_KEY']
+      VCR.eject_cassette
+      VCR.turn_off!
+      WebMock.disable!
   end
 end
 

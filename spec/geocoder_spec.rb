@@ -1,5 +1,9 @@
 require 'spec_helper'
 
+VCR.eject_cassette
+VCR.turn_off!
+WebMock.disable!
+
  describe Geocoder do
      before do
       @geocoder = Geocoder.new
@@ -13,9 +17,6 @@ require 'spec_helper'
   end
 
   it 'geocodes address' do
-   VCR.eject_cassette
-   VCR.turn_off!
-   WebMock.disable!
    expect([40.4489254, -3.6708406 ]).to eq(@geocoder.send(:geocode, "Calle de Pradillo, 42, 28002 Madrid, Spain"))
   end
 

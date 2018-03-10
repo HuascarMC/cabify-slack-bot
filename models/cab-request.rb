@@ -10,9 +10,10 @@ require_relative './cab'
 # puts cabs
 
 api_key = ENV['API_KEY']
-origin = '40.4489254, -3.6708406'
-destination = '1.2313,38.41'
-url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{origin}&destinations=#{destination}&key=#{api_key}"
+origin = '40.4153,-3.6845'
+destination = '40.4489254,-3.6708406'
 
+url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{origin}&destinations=#{destination}&key=#{api_key}"
+puts url
 json_distance = HTTP.get(url)
 puts json_distance

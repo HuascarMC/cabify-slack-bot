@@ -1,30 +1,21 @@
-require 'gistance'
+require 'http'
 
 class DistanceMatrix
  def initialize
-  Gistance.configure do |c|
-    c.api_key = ENV['API_KEY']
-    c.units = 'imperial' # default to metric
-    c.language = 'en' # default to en
-    c.sensor = true # default to false
-  end
+  @api_key = ENV['API_KEY']
+  @url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins="
  end
 
  def calculateDistance(origin, destination)
-  results = Gistance.distance_matrix(
-   origins: [origin],
-   destinations: [destination]
-  )
+  joinedUrl = @url+"#{origin}&destinations=#{destination}&key=#{@api_key}"
+  json_results = HTTP.get(joinedUrl)
+  results = JSON.parse(json_results)
   distance = results['rows'][0]['elements'][0]['distance']['text']
-
   return distance
  end
 
  def calculateDuration(origin, destination)
-  results = Gistance.distance_matrix(
-   origins: [origin],
-   destinations: [destination]
-  )
+  results = HTTP.get(@url+"#{origin}&destinations=#{destination}&key=#{@api_key}")
   duration = results['rows'][0]['elements'][0]['duration']['text']
   return duration
  end
