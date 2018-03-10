@@ -1,4 +1,4 @@
-module SlackMathbot
+module Bot
   module Commands
     class Calculate < SlackRubyBot::Commands::Base
       command 'calculate' do |client, data, _match|
