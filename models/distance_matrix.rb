@@ -25,4 +25,16 @@ class DistanceMatrix
   duration = self.calculateDuration(origin, destination)
   return [distance, duration]
  end
+
+ def getNearestCab(origin, cabs)
+  cabDistances = []
+
+  for cab in getCabs
+   cabDistance = calculateDistance(origin, cab)
+   cabDistances.push(cabDistance)
+  end
+
+  results = cabDistances.sort!
+  return results[0]
+ end
 end
