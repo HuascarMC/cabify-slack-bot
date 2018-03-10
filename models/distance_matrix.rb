@@ -1,5 +1,3 @@
-require 'http'
-
 class DistanceMatrix
  def initialize
   @api_key = ENV['API_KEY']

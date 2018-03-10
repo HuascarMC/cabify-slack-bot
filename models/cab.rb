@@ -1,4 +1,3 @@
-require 'http'
 class Cab
   attr_accessor :state, :name, :location, :city
 
