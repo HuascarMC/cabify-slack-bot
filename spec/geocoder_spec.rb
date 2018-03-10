@@ -13,6 +13,9 @@ require 'spec_helper'
   end
 
   it 'geocodes address' do
+   VCR.eject_cassette
+   VCR.turn_off!
+   WebMock.disable!
    expect({"lon"=>1.2313, "lat"=>38.41 }).to eq(@geocoder.send(:geocode, "Calle de Pradillo, 42, 28002 Madrid, Spain"))
   end
 
