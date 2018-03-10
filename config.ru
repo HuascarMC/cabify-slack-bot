@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'dotenv'
 Dotenv.load
 
-require 'slack-mathbot'
+require 'play'
 require 'specs/web'
 
 Thread.abort_on_exception = true
@@ -18,4 +18,4 @@ Thread.new do
   end
 end
 
-run SlackMathbot::Web
+run Play::Web
