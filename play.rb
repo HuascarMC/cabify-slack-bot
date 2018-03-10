@@ -1,5 +1,5 @@
 require 'slack-ruby-bot'
-require 'bot/commands/calculate'
+require 'bot/commands/cabify'
 require 'bot/bot'
 
 class PongBot < SlackRubyBot::Bot
