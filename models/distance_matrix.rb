@@ -15,7 +15,9 @@ class DistanceMatrix
  end
 
  def calculateDuration(origin, destination)
-  results = HTTP.get(@url+"#{origin}&destinations=#{destination}&key=#{@api_key}")
+  joinedUrl = @url+"#{origin}&destinations=#{destination}&key=#{@api_key}"
+  json_results = HTTP.get(joinedUrl)
+  results = JSON.parse(json_results)
   duration = results['rows'][0]['elements'][0]['duration']['text']
   return duration
  end
