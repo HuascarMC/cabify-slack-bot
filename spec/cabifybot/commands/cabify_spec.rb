@@ -10,4 +10,5 @@ describe CabifyBot::Commands::Cabify do
   it 'replies when command triggered' do
     expect(message: "#{SlackRubyBot.config.user} cabify", channel: 'channel').to respond_with_slack_message('A cab has been ordered to this address')
   end
+
 end
