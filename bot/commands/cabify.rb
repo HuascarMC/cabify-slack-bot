@@ -1,4 +1,4 @@
-module Bot
+module CabifyBot
   module Commands
     class Cabify < SlackRubyBot::Commands::Base
       command 'cabify' do |client, data, _match|

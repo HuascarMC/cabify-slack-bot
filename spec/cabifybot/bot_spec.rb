@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe SlackMathbot::Bot do
+describe CabifyBot::Bot do
   def app
-    SlackMathbot::Bot.instance
+    CabifyBot::Bot.instance
   end
 
   subject { app }
