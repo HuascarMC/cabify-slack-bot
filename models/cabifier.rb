@@ -1,5 +1,6 @@
 class Cabifier
   attr_accessor :api_key, :location
+  include Enumerable
 
   def initialize
       @api_key = ENV['API_KEY']
@@ -25,17 +26,19 @@ class Cabifier
 
   end
 
+# This method needs to be changed, using binary search instead of
+# looping through every object in JSON, narrowing down to the city
+# would be a better approach
   def calculateNearestCab(cabs, destination)
-   cabDistances = []
+   cabsWithDistances = []
 
    for cab in cabs
     cabCoords = cab.getCoords
-    puts cabCoords
     cabDistance = @distanceMatrix.calculateDistance(cabCoords, destination)
-    cabDistances.push(cabDistance)
+    cabsWithDistances.push({cab: cab, distance: cabDistance.to_f})
    end
 
-   results = cabDistances.sort!
-   return results[0]
+   results = cabsWithDistances.sort_by { |hsh| hsh[:distance] }
+   return results[0][:cab]
   end
 end
