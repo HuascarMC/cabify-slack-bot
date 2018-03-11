@@ -16,6 +16,13 @@ class Cabifier
    return cabs
   end
 
+  def getCabsInCity(city)
+   json_results = HTTP.get("http://localhost:3000/cabs?city=#{city}")
+   results = JSON.parse(json_results)
+   cabs = results.map { |rd| Cab.new(rd['state'], rd['name'], rd['location'], rd['city']) }
+   puts cabs
+  end
+
   def cabify(address)
    cabs = self.getCabs
 
@@ -33,8 +40,11 @@ class Cabifier
   def calculateNearestCab(cabs, destination)
    cabsWithDistances = []
    for cab in cabs
+
     cabCoords = cab.getCoords
+
     cabDistance = @distanceMatrix.calculateDistance(cabCoords, destination)
+
     cabsWithDistances.push({cab: cab, distance: cabDistance.to_f})
    end
 

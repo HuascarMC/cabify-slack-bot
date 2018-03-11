@@ -22,9 +22,9 @@ WebMock.disable!
   #  expect(0).to eq(cabs.size)
   # end
 
-  it 'hires nearest cab' do
-   expect('Opel').to eq(@cabifier.cabify('Plaza Mayor, Madrid'))
-  end
+  # it 'hires nearest cab' do
+  #  expect('Opel').to eq(@cabifier.cabify('Plaza Mayor, Madrid'))
+  # end
   #
   # it 'fails to hire nearest cab' do
   #  expect('').to eq(@cabifier.cabify())

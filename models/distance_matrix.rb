@@ -6,9 +6,7 @@ class DistanceMatrix
 
  def calculateDistance(origin, destination)
   joinedUrl = @url+"#{origin}&destinations=#{destination}&key=#{@api_key}"
-  puts joinedUrl
   json_results = HTTP.get(joinedUrl)
-
   results = JSON.parse(json_results)
   distance = results['rows'][0]['elements'][0]['distance']['text']
   return distance
@@ -27,4 +25,6 @@ class DistanceMatrix
   duration = self.calculateDuration(origin, destination)
   return [distance, duration]
  end
+
+
 end
