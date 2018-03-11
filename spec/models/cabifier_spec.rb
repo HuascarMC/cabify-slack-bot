@@ -17,9 +17,14 @@ WebMock.disable!
    expect(4).to eq(cabs.size)
   end
 
-  it 'gets cabs in a given city from Cabifys API' do
+  it 'gets cabs in Barcelona from Cabifys API' do
    cabs = @cabifier.getCabsInCity('Barcelona')
    expect(1).to eq(cabs.size)
+  end
+
+  it 'gets cabs in Madrid from Cabifys API' do
+   cabs = @cabifier.getCabsInCity('Madrid')
+   expect(3).to eq(cabs.size)
   end
 
   # it 'fails to get all cabs from Cabifys API' do
