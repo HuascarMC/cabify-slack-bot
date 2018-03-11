@@ -13,12 +13,14 @@ WebMock.disable!
 
 
   it 'gets all cabs from Cabifys API' do
-   expect('').to eq(@cabifier.getCabs())
+   cabs = @cabifier.getCabs()
+   expect(4).to eq(cabs.size)
   end
 
-  it 'fails to get all cabs from Cabifys API' do
-   expect('').to eq(@cabifier.getCabs())
-  end
+  # it 'fails to get all cabs from Cabifys API' do
+  #  cabs = @cabifier.getCabs()
+  #  expect(0).to eq(cabs.size)
+  # end
 
   it 'hires nearest cab' do
    expect('').to eq(@cabifier.cabify())

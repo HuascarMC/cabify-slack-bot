@@ -20,6 +20,10 @@ WebMock.disable!
    expect([40.4489254, -3.6708406 ]).to eq(@geocoder.send(:geocode, "Calle de Pradillo, 42, 28002 Madrid, Spain"))
   end
 
+  # it 'doesnt geocode address' do
+  #  expect(nil).to eq(@geocoder.send(:geocode, "[]"))
+  # end
+
   it 'geocodes different address' do
    expect([55.9476897, -3.1884344]).to eq(@geocoder.send(:geocode,  "Chambers St, Edinburgh EH1 1JF"))
   end

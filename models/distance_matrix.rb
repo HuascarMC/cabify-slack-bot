@@ -29,8 +29,8 @@ class DistanceMatrix
  def calculateNearestCab(origin, cabs)
   cabDistances = []
 
-  for cab in getCabs
-   cabDistance = calculateDistance(origin, cab)
+  for cab in cabs
+   cabDistance = self.calculateDistance(origin, cab)
    cabDistances.push(cabDistance)
   end
 

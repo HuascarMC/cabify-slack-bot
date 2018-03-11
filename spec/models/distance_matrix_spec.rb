@@ -25,7 +25,7 @@ WebMock.disable!
   end
 
   it 'calculates nearest cab' do
-   cabs = Cab.new().getCabs
+   cabs = Cabifier.new.getCabs
    location = ['40.4153,-3.6845']
    expect('something').to eq(@distanceMatrix.calculateNearestCab(location, cabs))
   end
