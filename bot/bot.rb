@@ -10,7 +10,7 @@ module CabifyBot
       response = @cabifier.cabify(expression)
 
       if (response[0] == "Success")
-       client.say(channel: data.channel, text: "A cab has been ordered to #{expression}, it's name is #{response[1]}")
+       client.say(channel: data.channel, text: "A cab has been ordered to #{expression}, it's name is #{response[1]} and it'll pick you up in around #{response[2]}")
       else
        client.say(channel: data.channel, text: "A cab couldnt be ordered to this address.")
       end
