@@ -10,15 +10,15 @@ class Cabifier
   end
 
   def getCabs
-   json_results = HTTP.get("http://localhost:3000/cabs")
+   json_results = HTTP.get("https://cabify-json.herokuapp.com/cabs/")
    results = JSON.parse(json_results)
    cabs = results.map { |rd| Cab.new(rd['state'], rd['name'], rd['location'], rd['city']) }
    return cabs
   end
 
   def getCabsInCity(city)
-   if(HTTP.get("http://localhost:3000/cabs?city=#{city}").code == 200)
-    json_results = HTTP.get("http://localhost:3000/cabs?city=#{city}")
+   if(HTTP.get("https://cabify-json.herokuapp.com/cabs?city=#{city}").code == 200)
+    json_results = HTTP.get("https://cabify-json.herokuapp.com/cabs?city=#{city}")
     results = JSON.parse(json_results)
     cabs = results.map { |rd| Cab.new(rd['state'], rd['name'], rd['location'], rd['city']) }
     return cabs
