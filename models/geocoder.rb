@@ -16,6 +16,10 @@ class Geocoder
    return [lat, lng]
  end
 
+ def geocodeGem(address)
+  return @geocoder.send(:geocode, address)
+ end
+
  def city(address)
   split_address = address.gsub(/,*\s+/,'+')
   url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{split_address}&key=#{@api_key}"
