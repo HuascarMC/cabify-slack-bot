@@ -20,7 +20,7 @@ describe CabifyBot::Bot do
   # it 'calculates distance for the nearest taxi available' do
   # end
 
-  it 'hires the taxi' do
-   expect(message: "#{SlackRubyBot.config.user} Cabify Calle de Pradillo, 42, 28002 Madrid, Spain", channel: 'channel').to respond_with_slack_message('Calle de Pradillo, 42, 28002 Madrid, Spain')
-  end
+  # it 'hires the taxi' do
+  #  expect(message: "#{SlackRubyBot.config.user} Cabify Calle de Pradillo, 42, 28002 Madrid, Spain", channel: 'channel').to respond_with_slack_message('Calle de Pradillo, 42, 28002 Madrid, Spain')
+  # end
 end

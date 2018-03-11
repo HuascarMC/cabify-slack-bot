@@ -11,7 +11,6 @@ WebMock.disable!
 
   subject { app }
 
-
   it 'calculates distance between two coordinates' do
    expect('6.3 mi').to eq(@distanceMatrix.calculateDistance('40.4153,-3.6845', '40.4489254,-3.6708406'))
   end
