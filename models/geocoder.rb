@@ -13,7 +13,7 @@ class Geocoder
    data = JSON.parse(json_data)
    lat = data['results'][0]['geometry']['location']['lat']
    lng = data['results'][0]['geometry']['location']['lng']
-   return [lat, lng]
+   return "#{lat},#{lng}"
  end
 
  def geocodeGem(address)

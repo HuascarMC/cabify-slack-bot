@@ -24,14 +24,19 @@ class Cabifier
   end
 
   def cabify(address)
-   cabs = self.getCabs
-
    clientCoords = @geocoder.geocode(address)
+   clientCity = @geocoder.city(address)
+   cabs = self.getCabsInCity(clientCity)
 
-   cab = self.calculateNearestCab(cabs, clientCoords)
-
-   # hire = HTTP.post("http://35.204.38.8:4000/api/v1/taxis/#{cab.city}/#{cab.name}")
-   # puts hire
+   cab = self.calculateNearestCab(cabs,clientCoords)
+   puts cab.city
+   puts cab.name
+   hire = HTTP.post("http://35.204.38.8:4000/api/v1/taxis/#{cab.city}/#{cab.name}", :json => {:state => "hired"})
+   if (hire.code == 200)
+    return "Success"
+   else
+    return "Failure"
+   end
   end
 
 # This method needs to be changed, using binary search instead of
@@ -43,7 +48,7 @@ class Cabifier
 
     cabCoords = cab.getCoords
 
-    cabDistance = @distanceMatrix.calculateDistance(cabCoords, destination)
+    cabDistance = @distanceMatrix.calculateDistance(cabCoords,destination)
 
     cabsWithDistances.push({cab: cab, distance: cabDistance.to_f})
    end
