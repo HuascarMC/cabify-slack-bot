@@ -4,8 +4,8 @@ class Cabifier
 
   def initialize
       @api_key = ENV['API_KEY']
-      @geocoder = Geocoder.new
       @distanceMatrix = DistanceMatrix.new
+      @geocoder = Geocoder.new
       @cab
   end
 

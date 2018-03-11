@@ -1,14 +1,15 @@
+require 'models/cabifier'
 require 'models/geocoder'
 require 'models/distance_matrix'
-require 'models/cab'
 
 module CabifyBot
+ $cabifier = Cabifier.new
   class Bot < SlackRubyBot::Bot
-   match /^Cabify (?<location>\w*)$/ do |client, data, match|
+   match(/^Cabify (?<expression>.*)$/) do |client, data, match|
+         expression = match['expression'].strip
+      response = $cabifier.cabify(expression)
 
-      destinationCoords = Geocoder.new().geocode(match[:location])
-      cabs = Cab.new().getCabs
-      client.say(channel: data.channel, text: "A cab has been ordered to #{match[:location]}")
+      client.say(channel: data.channel, text: "A cab has been ordered to #{expression} #{response}")
    end
   end
 end
