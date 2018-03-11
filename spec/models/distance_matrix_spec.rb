@@ -23,4 +23,10 @@ WebMock.disable!
   it 'calculates and returns both distance and duration in array' do
    expect(['6.3 mi', '21 mins']).to eq(@distanceMatrix.calculateDistanceAndDuration('40.4153,-3.6845', '40.4489254,-3.6708406'))
   end
+
+  it 'calculates nearest cab' do
+   cabs = Cab.new().getCabs
+   location = ['40.4153,-3.6845']
+   expect('something').to eq(@distanceMatrix.calculateNearestCab(location, cabs))
+  end
 end

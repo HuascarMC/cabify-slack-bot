@@ -26,7 +26,7 @@ class DistanceMatrix
   return [distance, duration]
  end
 
- def getNearestCab(origin, cabs)
+ def calculateNearestCab(origin, cabs)
   cabDistances = []
 
   for cab in getCabs
