@@ -19,9 +19,7 @@ class Cabifier
   def getCabsInCity(city)
    if(HTTP.get("http://localhost:3000/cabs?city=#{city}").code == 200)
     json_results = HTTP.get("http://localhost:3000/cabs?city=#{city}")
-    puts json_results
     results = JSON.parse(json_results)
-    puts results
     cabs = results.map { |rd| Cab.new(rd['state'], rd['name'], rd['location'], rd['city']) }
     return cabs
    else
@@ -35,11 +33,13 @@ class Cabifier
    cabs = self.getCabsInCity(clientCity)
 
    if(cabs != 'None')
-     cab = self.calculateNearestCab(cabs,clientCoords)
+     cabAndDuration = self.calculateNearestCabAndDuration(cabs,clientCoords)
+     cab = cabAndDuration[0]
+     duration = cabAndDuration[1]
      hire = HTTP.post("http://35.204.38.8:4000/api/v1/taxis/#{cab.city}/#{cab.name}", :json => {:state => "hired"})
 
       if (hire.code == 200)
-       return ["Success", cab.name]
+       return ["Success", cab.name, duration]
       else
        return "Failure"
       end
@@ -52,18 +52,20 @@ class Cabifier
 # This method needs to be changed, using binary search instead of
 # looping through every object in JSON, narrowing down to the city
 # would be a better approach
-  def calculateNearestCab(cabs, destination)
+  def calculateNearestCabAndDuration(cabs, destination)
    cabsWithDistances = []
    for cab in cabs
 
     cabCoords = cab.getCoords
 
-    cabDistance = @distanceMatrix.calculateDistance(cabCoords,destination)
+    cabDistanceAndDuration = @distanceMatrix.calculateDistanceAndDuration(cabCoords,destination)
+    cabDistance = cabDistanceAndDuration[0]
+    cabDuration = cabDistanceAndDuration[1]
 
     cabsWithDistances.push({cab: cab, distance: cabDistance.to_f})
    end
 
    results = cabsWithDistances.sort_by { |hsh| hsh[:distance] }
-   return results[0][:cab]
+   return [results[0][:cab], cabDuration]
   end
 end

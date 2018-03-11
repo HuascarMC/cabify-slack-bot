@@ -44,13 +44,14 @@ WebMock.disable!
    cabs = @cabifier.getCabs
    cab = cabs.select{ |c| c.name == 'Hyundai' }
    destination = '40.4489254,-3.6708406'
-   expect(cab[0]).to eq(@cabifier.calculateNearestCab(cabs, destination))
+   expect(cab[0]).to eq(@cabifier.calculateNearestCabAndDuration(cabs, destination)[0])
   end
 
   it 'calculate nearest cab given a different location' do
    cabs = @cabifier.getCabs
    cab = cabs.select{ |c| c.name == 'Opel' }
    destination = '37.129665,-8.669586'
-   expect(cab[0]).to eq(@cabifier.calculateNearestCab(cabs, destination))
+   expect(cab[0]).to eq(@cabifier.calculateNearestCabAndDuration(cabs, destination)[0])
   end
+  
 end
