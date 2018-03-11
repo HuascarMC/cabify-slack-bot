@@ -22,9 +22,4 @@ require 'spec_helper'
   it 'has a city' do
    expect("Barcelona").to include(@cab.city)
   end
-
-  it 'gets cabs from API' do
-   result = @cab.getCabs
-   expect(4).to eq(result.size)
-  end
 end
