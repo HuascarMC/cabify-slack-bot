@@ -23,9 +23,9 @@ class Geocoder
  def city(address)
   split_address = address.gsub(/,*\s+/,'+')
   url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{split_address}&key=#{@api_key}"
-
    json_data = HTTP.get(url)
    data = JSON.parse(json_data)
-
+   city = data['results'][0]['address_components'][1]['long_name']
+   return city
  end
 end
