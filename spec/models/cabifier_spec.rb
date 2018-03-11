@@ -33,7 +33,7 @@ WebMock.disable!
   # end
 
   it 'hires nearest cab' do
-   expect('Success').to eq(@cabifier.cabify('Plaza Mayor, Madrid'))
+   expect('Success').to eq(@cabifier.cabify('Plaza Mayor, Madrid')[0])
   end
   #
   # it 'fails to hire nearest cab' do
@@ -53,5 +53,5 @@ WebMock.disable!
    destination = '37.129665,-8.669586'
    expect(cab[0]).to eq(@cabifier.calculateNearestCabAndDuration(cabs, destination)[0])
   end
-  
+
 end
