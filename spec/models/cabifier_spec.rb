@@ -29,4 +29,14 @@ WebMock.disable!
   it 'fails to hire nearest cab' do
    expect('').to eq(@cabifier.cabify())
   end
+
+  it 'calculates nearest cab' do
+   cabs = @cabifier.getCabs
+   destination = '40.4489254,-3.6708406'
+   expect('something').to eq(@cabifier.calculateNearestCab(cabs, destination))
+  end
+
+  it 'fails to calculate nearest cab' do
+
+  end
 end

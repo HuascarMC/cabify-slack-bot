@@ -9,8 +9,8 @@ class Cab
   end
 
   def getCoords
-   lat = self.location[lat].to_s
-   lng = self.location[lng].to_s
+   lat = self.location['lat']
+   lng = self.location['lon']
    result = "#{lat}, #{lng}"
    return result
   end

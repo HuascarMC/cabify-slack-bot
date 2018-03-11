@@ -9,9 +9,9 @@ class Cabifier
   end
 
   def getCabs
-   json_results = HTTP.get("http://35.204.38.8:4000/api/v1/taxis/")
+   json_results = HTTP.get("http://localhost:3000/cabs")
    results = JSON.parse(json_results)
-   cabs = results.map { |rd| Cab.new(rd['state'], rd['name'], rd['coords'], rd['city']) }
+   cabs = results.map { |rd| Cab.new(rd['state'], rd['name'], rd['location'], rd['city']) }
    return cabs
   end
 
@@ -23,5 +23,22 @@ class Cabifier
    @distanceMatrix.calculateNearestCab(clientCoords, cabs)
 
 
+  end
+
+  def calculateNearestCab(cabs, destination)
+   cabDistances = []
+
+   for cab in cabs
+    cabCoords = cab.getCoords
+    for cab in cabs
+     cabCoords = cab.getCoords
+     puts cabCoords
+    end
+    cabDistance = @distanceMatrix.calculateDistance(cabCoords, destination)
+    cabDistances.push(cabDistance)
+   end
+
+   results = cabDistances.sort!
+   return results[0]
   end
 end
