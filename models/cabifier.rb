@@ -36,13 +36,10 @@ class Cabifier
 
    if(cabs != 'None')
      cab = self.calculateNearestCab(cabs,clientCoords)
-     puts address
-     puts cab.city
-     puts cab.name
      hire = HTTP.post("http://35.204.38.8:4000/api/v1/taxis/#{cab.city}/#{cab.name}", :json => {:state => "hired"})
-     puts hire
+
       if (hire.code == 200)
-       return "Success"
+       return ["Success", cab.name]
       else
        return "Failure"
       end
