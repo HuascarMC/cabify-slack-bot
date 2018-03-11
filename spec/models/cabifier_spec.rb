@@ -23,7 +23,7 @@ WebMock.disable!
   # end
 
   it 'hires nearest cab' do
-   expect('').to eq(@cabifier.cabify())
+   expect('Opel').to eq(@cabifier.cabify('Plaza Mayor, Madrid'))
   end
   #
   # it 'fails to hire nearest cab' do

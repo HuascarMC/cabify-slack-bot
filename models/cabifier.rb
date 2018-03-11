@@ -16,14 +16,15 @@ class Cabifier
    return cabs
   end
 
-  def hiresNearestCab(address)
+  def cabify(address)
    cabs = self.getCabs
 
    clientCoords = @geocoder.geocode(address)
 
-   @distanceMatrix.calculateNearestCab(clientCoords, cabs)
+   cab = self.calculateNearestCab(cabs, clientCoords)
 
-
+   # hire = HTTP.post("http://35.204.38.8:4000/api/v1/taxis/#{cab.city}/#{cab.name}")
+   # puts hire
   end
 
 # This method needs to be changed, using binary search instead of
@@ -31,7 +32,6 @@ class Cabifier
 # would be a better approach
   def calculateNearestCab(cabs, destination)
    cabsWithDistances = []
-
    for cab in cabs
     cabCoords = cab.getCoords
     cabDistance = @distanceMatrix.calculateDistance(cabCoords, destination)
