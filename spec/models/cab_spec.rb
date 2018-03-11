@@ -2,7 +2,7 @@ require 'spec_helper'
 
  describe Cab do
      before do
-      @cab = Cab.new('free', 'Land Rover', {"lon"=>1.2313, "lat"=>38.41 }, "Barcelona")
+      @cab = Cab.new('free', 'Land Rover', {"lon"=>1.2313, "lat"=>38.41 }, "Mediterranean sea")
      end
 
   subject { app }
@@ -20,10 +20,10 @@ require 'spec_helper'
   end
 
   it 'has a city' do
-   expect("Barcelona").to include(@cab.city)
+   expect("Mediterranean sea").to include(@cab.city)
   end
 
   it 'gives cabs coordinates' do
-   expect('1.2112, 38.41').to include(@cab.getCoords)
+   expect('38.41,1.2313').to include(@cab.getCoords)
   end
 end

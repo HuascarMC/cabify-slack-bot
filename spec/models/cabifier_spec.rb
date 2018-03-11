@@ -25,19 +25,22 @@ WebMock.disable!
   it 'hires nearest cab' do
    expect('').to eq(@cabifier.cabify())
   end
+  #
+  # it 'fails to hire nearest cab' do
+  #  expect('').to eq(@cabifier.cabify())
+  # end
 
-  it 'fails to hire nearest cab' do
-   expect('').to eq(@cabifier.cabify())
-  end
-
-  it 'calculates nearest cab' do
+  it 'calculates nearest cab given a location' do
    cabs = @cabifier.getCabs
    cab = cabs.select{ |c| c.name == 'Hyundai' }
    destination = '40.4489254,-3.6708406'
    expect(cab[0]).to eq(@cabifier.calculateNearestCab(cabs, destination))
   end
 
-  it 'fails to calculate nearest cab' do
-
+  it 'calculate nearest cab given a different location' do
+   cabs = @cabifier.getCabs
+   cab = cabs.select{ |c| c.name == 'Opel' }
+   destination = '37.129665,-8.669586'
+   expect(cab[0]).to eq(@cabifier.calculateNearestCab(cabs, destination))
   end
 end
