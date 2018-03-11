@@ -22,6 +22,6 @@ class Geocoder
 
    json_data = HTTP.get(url)
    data = JSON.parse(json_data)
-   return data
+
  end
 end
