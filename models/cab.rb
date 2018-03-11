@@ -7,4 +7,11 @@ class Cab
       @location = location
       @city = city
   end
+
+  def getCoords
+   lat = self.location[lat].to_s
+   lng = self.location[lng].to_s
+   result = "#{lat}, #{lng}"
+   return result
+  end
 end

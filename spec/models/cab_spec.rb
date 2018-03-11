@@ -22,4 +22,8 @@ require 'spec_helper'
   it 'has a city' do
    expect("Barcelona").to include(@cab.city)
   end
+
+  it 'gives cabs coordinates' do
+   expect('1.2112, 38.41').to include(@cab.getCoords)
+  end
 end
