@@ -17,10 +17,16 @@ class Cabifier
   end
 
   def getCabsInCity(city)
-   json_results = HTTP.get("http://localhost:3000/cabs?city=#{city}")
-   results = JSON.parse(json_results)
-   cabs = results.map { |rd| Cab.new(rd['state'], rd['name'], rd['location'], rd['city']) }
-   return cabs
+   if(HTTP.get("http://localhost:3000/cabs?city=#{city}").code == 200)
+    json_results = HTTP.get("http://localhost:3000/cabs?city=#{city}")
+    puts json_results
+    results = JSON.parse(json_results)
+    puts results
+    cabs = results.map { |rd| Cab.new(rd['state'], rd['name'], rd['location'], rd['city']) }
+    return cabs
+   else
+    return 'None'
+   end
   end
 
   def cabify(address)
@@ -28,18 +34,23 @@ class Cabifier
    clientCity = @geocoder.city(address)
    cabs = self.getCabsInCity(clientCity)
 
-   cab = self.calculateNearestCab(cabs,clientCoords)
-   puts address
-   puts cab.city
-   puts cab.name
-   hire = HTTP.post("http://35.204.38.8:4000/api/v1/taxis/#{cab.city}/#{cab.name}", :json => {:state => "hired"})
-   puts hire
-   if (hire.code == 200)
-    return "Success"
-   else
-    return "Failure"
+   if(cabs != 'None')
+     cab = self.calculateNearestCab(cabs,clientCoords)
+     puts address
+     puts cab.city
+     puts cab.name
+     hire = HTTP.post("http://35.204.38.8:4000/api/v1/taxis/#{cab.city}/#{cab.name}", :json => {:state => "hired"})
+     puts hire
+      if (hire.code == 200)
+       return "Success"
+      else
+       return "Failure"
+      end
+    else
+     return "Failure"
    end
   end
+
 
 # This method needs to be changed, using binary search instead of
 # looping through every object in JSON, narrowing down to the city
