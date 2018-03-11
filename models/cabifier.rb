@@ -20,7 +20,7 @@ class Cabifier
    json_results = HTTP.get("http://localhost:3000/cabs?city=#{city}")
    results = JSON.parse(json_results)
    cabs = results.map { |rd| Cab.new(rd['state'], rd['name'], rd['location'], rd['city']) }
-   puts cabs
+   return cabs
   end
 
   def cabify(address)
