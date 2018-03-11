@@ -30,10 +30,7 @@ class Cabifier
 
    for cab in cabs
     cabCoords = cab.getCoords
-    for cab in cabs
-     cabCoords = cab.getCoords
-     puts cabCoords
-    end
+    puts cabCoords
     cabDistance = @distanceMatrix.calculateDistance(cabCoords, destination)
     cabDistances.push(cabDistance)
    end

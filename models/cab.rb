@@ -11,7 +11,7 @@ class Cab
   def getCoords
    lat = self.location['lat']
    lng = self.location['lon']
-   result = "#{lat}, #{lng}"
+   result = "#{lat},#{lng}"
    return result
   end
 end
