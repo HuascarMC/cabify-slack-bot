@@ -1,14 +1,14 @@
 # Cabify Slack Bot(unstable)
 
-![Alt text]https://media.giphy.com/media/3Z1f7k8ZtdT4iPOxIy/giphy.gif
+![](images/workinggif.gif)
 
-This project is still in development, custom slack integration that behaves like a bot that makes requests on a Cab JSON API, 
+This project is still in development, custom slack integration that behaves like a bot that makes requests on a Cab JSON API,
 calculates the distance between the location of the cab and a given address and does a POST request on the API after that it
 'slacks' the client with the name of the cab and the time it'll take to get to the given address.
 
 ## Current issues
 
-This app has different classes that use a variety of 'gems' to provide the service, when testing and using the service there's 
+This app has different classes that use a variety of 'gems' to provide the service, when testing and using the service there's
 a conflict when the 'HTTP gem' is used by the bot so the service only works for addresses in Spain.
 
 The service API provided for the task has wrong coordinates for the 'cab objects' provided. I've developed and deployed a similar API on [Cab's API](https://cabify-json.herokuapp.com/cabs').
@@ -27,7 +27,7 @@ to arrive to the given address on slack. This could be done with Google Maps.
 
 Add help command to show bot functionality to the client.
 
-Tried to deploy the bot and make it available for distribution but Heroku doesn't recognize the app as a Ruby application and 
+Tried to deploy the bot and make it available for distribution but Heroku doesn't recognize the app as a Ruby application and
 I'm still looking into it.
 
 Small website with slack button to add bot.
@@ -42,4 +42,3 @@ Use 'rspec' to run tests, it fails if the environment is not properly set up or 
 an API deployed on heroku and sometimes it might be put to sleep.
 
 To run the bot use 'foreman start'
-
