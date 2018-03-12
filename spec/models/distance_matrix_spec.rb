@@ -15,8 +15,16 @@ WebMock.disable!
    expect('6.3 mi').to eq(@distanceMatrix.calculateDistance('40.4153,-3.6845', '40.4489254,-3.6708406'))
   end
 
+  xit 'fails to calculate distance between two coordinates' do
+   expect('').to eq(@distanceMatrix.calculateDistance())
+  end
+
   it 'calculates duration of travel between two coordiantes' do
    expect('21 mins').to eq(@distanceMatrix.calculateDuration('40.4153,-3.6845', '40.4489254,-3.6708406'))
+  end
+
+  xit 'fails to calculate duration of travel between two coordinates' do
+   expect('').to eq(@distanceMatrix.calculateDistance())
   end
 
   it 'calculates and returns both distance and duration in array' do

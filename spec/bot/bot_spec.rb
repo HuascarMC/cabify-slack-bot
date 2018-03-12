@@ -9,18 +9,11 @@ describe CabifyBot::Bot do
 
   it_behaves_like 'a slack ruby bot'
 
-  # it 'receives address' do
-  #  expect(message: "#{SlackRubyBot.config.user} Cabify Calle de Pradillo, 42, 28002 Madrid, Spain", channel: 'channel').to respond_with_slack_message('Calle de Pradillo, 42, 28002 Madrid, Spain')
-  # end
-
-  # it 'geocodes address' do
-  #  expect([40.4489254, -3.6708406])
-  # end
-
-  # it 'calculates distance for the nearest taxi available' do
-  # end
-
-  it 'can hire a cab' do
+  xit 'can hire a cab' do
    expect(message: "Cabify Calle de Pradillo, 42, 28002 Madrid, Spain", channel: 'channel').to respond_with_slack_message('A cab has been ordered to Calle de Pradillo, 42, 28002 Madrid, Spain')
+  end
+
+  xit 'fails to hire a cab' do
+   expect(message: "Angola City", channel: 'channel').to respond_with_slack_message("A cab couldnt be ordered to this address.")
   end
 end
