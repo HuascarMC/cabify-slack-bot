@@ -39,4 +39,8 @@ WebMock.disable!
   xit 'fails to get city for address' do
    expect('Madrid').to  eq(@geocoder.city("Plaza de la Puerta del Sol, s/n, 28013"))
   end
+
+  it 'test with a different address' do
+   expect('40.3196029,-3.8562209').to eq(@geocoder.geocode("62 calle de simon hernandez"))
+  end
 end
