@@ -1,4 +1,4 @@
-# cabify-slack-bot
+# Cabify Slack Bot(unstable)
 
 This project is still in development, custom slack integration that behaves like a bot that makes requests on a Cab JSON API, 
 calculates the distance between the location of the cab and a given address and does a POST request on the API after that it
