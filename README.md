@@ -1,5 +1,7 @@
 # Cabify Slack Bot(unstable)
 
+![Alt text]https://media.giphy.com/media/3Z1f7k8ZtdT4iPOxIy/giphy.gif
+
 This project is still in development, custom slack integration that behaves like a bot that makes requests on a Cab JSON API, 
 calculates the distance between the location of the cab and a given address and does a POST request on the API after that it
 'slacks' the client with the name of the cab and the time it'll take to get to the given address.
