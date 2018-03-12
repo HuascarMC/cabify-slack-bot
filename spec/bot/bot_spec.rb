@@ -17,7 +17,7 @@ describe CabifyBot::Bot do
    expect(message: "Angola City", channel: 'channel').to respond_with_slack_message("A cab couldnt be ordered to this address.")
   end
 
-  it 'fails to hire a cab with different address' do
-   expect(message: "Cabify Plaza Sta. Ana, 14 Madrid", channel: 'channel').to respond_with_slack_message("A cab couldnt be ordered to this address.")
+  it 'fails to hire a cab with bad address' do
+   expect(message: "Cabify plaza mayor, madrid", channel: 'channel').to respond_with_slack_message("A cab couldnt be ordered to this address.")
   end
 end

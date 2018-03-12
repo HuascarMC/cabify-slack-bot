@@ -38,7 +38,7 @@ WebMock.disable!
   end
 
   it 'hires nearest cab' do
-   expect('Success').to eq(@cabifier.cabify('Plaza Mayor, Madrid')[0])
+   expect('Success').to eq(@cabifier.cabify('Plaza Mayor 1, Madrid')[0])
   end
   #
   xit 'fails to hire nearest cab' do
