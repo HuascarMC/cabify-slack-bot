@@ -3,14 +3,14 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'dotenv'
 Dotenv.load
 
-require 'play'
-require 'specs/web'
+require 'cabify-bot'
+require 'web'
 
 Thread.abort_on_exception = true
 
 Thread.new do
   begin
-    Play::Bot.run
+    CabifyBot::Bot.run
   rescue Exception => e
     STDERR.puts "ERROR: #{e}"
     STDERR.puts e.backtrace
@@ -18,4 +18,4 @@ Thread.new do
   end
 end
 
-run Play::Web
+run CabifyBot::Web

@@ -1,6 +1,6 @@
 require 'sinatra/base'
 
-module Bot
+module CabifyBot
   class Web < Sinatra::Base
     get '/' do
       '.'

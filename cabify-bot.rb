@@ -1,0 +1,7 @@
+require 'slack-ruby-bot'
+require 'cabify-bot/commands/cabify'
+require 'cabify-bot/bot'
+require 'http'
+require 'models/cab'
+require 'models/distance_matrix'
+require 'models/geocoder'
