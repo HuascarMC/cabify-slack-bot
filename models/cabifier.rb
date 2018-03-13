@@ -23,7 +23,7 @@ class Cabifier
     cabs = results.map { |rd| Cab.new(rd['state'], rd['name'], rd['location'], rd['city']) }
     return cabs
    else
-    return 'None'
+    return []
    end
   end
 
@@ -32,8 +32,10 @@ class Cabifier
    clientCity = @geocoder.city(address)
    cabs = self.getCabsInCity(clientCity)
 
-   if(cabs != 'None')
+
+   if(cabs != [])
      cabAndDuration = self.calculateNearestCabAndDuration(cabs,clientCoords)
+
      cab = cabAndDuration[0]
      duration = cabAndDuration[1]
      hire = HTTP.post("http://35.204.38.8:4000/api/v1/taxis/#{cab.city}/#{cab.name}", :json => {:state => "hired"})
@@ -41,10 +43,10 @@ class Cabifier
       if (hire.code == 200)
        return ["Success", cab.name, duration]
       else
-       return "Failure"
+       return 'failure'
       end
-    else     
-     return "Failure"
+    else
+     return "failure"
    end
   end
 
@@ -62,10 +64,15 @@ class Cabifier
     cabDistance = cabDistanceAndDuration[0]
     cabDuration = cabDistanceAndDuration[1]
 
+
     cabsWithDistances.push({cab: cab, distance: cabDistance.to_f})
    end
 
    results = cabsWithDistances.sort_by { |hsh| hsh[:distance] }
-   return [results[0][:cab], cabDuration]
+   if results != nil
+    return [results[0][:cab], cabDuration]
+   else
+    return 'failure'
+   end
   end
 end
