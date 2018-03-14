@@ -1,6 +1,8 @@
 # Cabify Slack Bot
 
-Not all tests are passing yet and a few bugs are listed below.
+Not all tests are passing yet and a few bugs are still to be fixed..
+
+The bot is deployed on heroku and can be added to your workplace [here](cabify.herokuapp.com). 
 
 ## Installation
 
@@ -44,27 +46,3 @@ Example: ```"Cabify C/Simón Hernández, 62 Madrid"```
 
 3. It only works with some addresses at the moment.
 
-## Current issues
-
-This app has different classes that use a variety of 'gems' to provide the service, when testing and using the service there's
-a conflict when the 'HTTP gem' is used by the bot so the service only works for addresses in Spain.
-
-The service API provided for the task has wrong coordinates for the 'cab objects' provided. I've developed and deployed a similar API on [Cab's API](https://cabify-json.herokuapp.com/cabs').
-The new API is not fully operational but doesn't have a delay functionality when POST requests are made, so POST requests are
-still made on the API provided and GET requests are made on the API I created.
-
-The app needs to have more tests for different scenarios.
-
-When the bot is looking for the nearest cab available it narrows the search to the city of the given address, this is faster
-than looking for all the cabs in the API but it's still slow and could be improved.
-
-## Desirable Features
-
-1. Add commands that tell the client the current location of the cab, show a map with the location and route the cab will take
-to arrive to the given address on slack. This could be done with Google Maps.
-
-2. Add help command to show bot functionality to the client.
-
-3. Tried to deploy the bot and make it available for distribution but Heroku doesn't recognize the app as a Ruby application and I'm still looking into it.
-
-4. Small website with slack button to add bot.
