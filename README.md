@@ -2,7 +2,7 @@
 
 Not all tests are passing yet and a few bugs are still to be fixed..
 
-The bot is deployed on heroku and can be added to your workplace [here](cabify.herokuapp.com). 
+The bot is deployed on heroku and can be added to your workplace [here](https://cabify.herokuapp.com). 
 
 ## Installation
 
